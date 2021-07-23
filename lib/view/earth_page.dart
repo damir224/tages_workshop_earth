@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart';
 import 'package:tages_workshop_earth/cubit/earth_cubit.dart';
+import 'package:tages_workshop_earth/models/config.dart';
+import 'package:tages_workshop_earth/services/rive_service.dart';
 
 class EarthPage extends StatelessWidget {
+  const EarthPage(this._config);
+
+  final EarthConfig _config;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<EarthCubit>(
-      create: (context) => EarthCubit(),
+      create: (context) => EarthCubit(RiveService(_config)),
       child: Scaffold(
         body: SafeArea(
           top: false,
